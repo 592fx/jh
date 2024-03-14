@@ -6,7 +6,6 @@
 只需要xxxxx。loginCode有效期未测试，如过短将删除
 
 每天运行一两次
-
 cron: 33 7,19 * * *
 const $ = new Env("联通支付宝小程序签到");
 */
