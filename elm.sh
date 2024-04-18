@@ -24,7 +24,7 @@ fi
 
 download_elm(){
 echo "开始下载elm二进制文件到$PWD/ELM目录"
-curl -sS -o $PWD/ELM/elm-$_ftype --create-dirs  https://jsdelivr.b-cdn.net/gh/lu0b0/ELM@main/ELM/elm-$_ftype
+curl -sS -o $PWD/ELM/elm-$_ftype --create-dirs  https://raw.githubusercontent.com/592fx/jh/main/elm-amd64
 echo "下载完成，如需重新下载或更新请先删除该文件"
 if [ -f "$PWD/ELM/elm-$_ftype" ]; then
     echo "$PWD/ELM/elm-$_ftype"
