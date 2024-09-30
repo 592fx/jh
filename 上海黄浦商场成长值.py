@@ -16,11 +16,28 @@ import random
 import re
 import time
 import requests
+from datetime import datetime
 from urllib3.exceptions import InsecureRequestWarning, InsecurePlatformWarning
-from common import save_result_to_file
-from sendNotify import send
+#from common import save_result_to_file
+#from sendNotify import send
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 requests.packages.urllib3.disable_warnings(InsecurePlatformWarning)
+
+def save_result_to_file(status, name):
+    if status == "success":
+        result = f'✅【{name}】 | CK正常'
+    elif status == "error":
+        result = f'❌【{name}】 | CK已失效'
+
+    # 获取当前日期并格式化
+    today_date = datetime.now().strftime("%Y%m%d")
+    file_name = f'script_results_{today_date}.txt'
+
+    try:
+        with open(file_name, 'a', encoding='utf-8') as f:
+            f.write(f'{result}\n')
+    except Exception as e:
+        print(f"保存结果到文件时出现异常：{str(e)}")
 
 
 class SHHP_MALL():
@@ -329,7 +346,7 @@ class SHHP_MALL():
                 ✨ 规则
                 '''
                 message += f'账号: {mobile}\n'
-                send("上海黄浦成长值达标1200", message)
+                #send("上海黄浦成长值达标1200", message)
 
     def main(self):
         if self.gen_access_token():
